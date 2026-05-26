@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 export default function Home() {
   // 1. Keep track of which problem is currently selected
-  const [problemId, setProblemId] = useState('two-sum');
-  const [code, setCode] = useState('def add(a, b):\n    return a + b');
+  const [problemId, setProblemId] = useState('multiply');
+  const [code, setCode] = useState('Type the code\nor Paste the code here!');
   const [feedback, setFeedback] = useState('');
 
   // Local helper to change static UI descriptions depending on selection
@@ -35,41 +35,88 @@ export default function Home() {
   };
 
   return (
-    <div style={{ padding: '40px', fontFamily: 'sans-serif', maxWidth: '600px', color: '#111111', backgroundColor: '#ffffff', minHeight: '100vh' }}>
-      <h1>📝 Code Grader Prototype</h1>
-      
-      {/* Problem Selector Dropdown */}
+  <div style={{ 
+    padding: '40px', 
+    maxWidth: '800px', 
+    margin: '0 auto', 
+    backgroundColor: 'var(--background)', 
+    color: 'var(--foreground)',
+    minHeight: '100vh',
+    boxSizing: 'border-box'
+  }}>
+    <h1>📝 Code Grader Prototype</h1>
+    
+    <div style={{ marginBottom: '20px' }}>
       <label style={{ fontWeight: 'bold' }}>Select Assignment: </label>
       <select 
         value={problemId} 
         onChange={(e) => setProblemId(e.target.value)}
-        style={{ padding: '5px', fontSize: '16px', marginBottom: '20px' }}
+        style={{ 
+          padding: '8px', 
+          fontSize: '16px', 
+          backgroundColor: 'var(--card-bg)', 
+          color: 'var(--foreground)', 
+          border: '1px solid var(--border-color)',
+          borderRadius: '4px'
+        }}
       >
         <option value="two-sum">Problem 1: Add Two Numbers</option>
         <option value="multiply">Problem 2: Multiply Two Numbers</option>
       </select>
-
-      <hr />
-
-      <h2>{instructionsMap[problemId].title}</h2>
-      <p>{instructionsMap[problemId].desc}</p>
-      
-      <textarea 
-        value={code} 
-        onChange={(e) => setCode(e.target.value)} 
-        rows={10} 
-        style={{ width: '100%', fontFamily: 'monospace', padding: '10px', fontSize: '16px', color: '#111111', backgroundColor: '#ffffff', border: '2px solid #ccc', borderRadius: '4px' }}
-      />
-      <br /><br />
-      
-      <button onClick={submitCode} style={{ padding: '10px 20px', cursor: 'pointer', fontSize: '16px', backgroundColor: '#0070f3', color: '#ffffff', border: 'none', borderRadius: '4px' }}>
-        Submit Code
-      </button>
-      
-      <h2>Results:</h2>
-      <pre style={{ background: '#f0f0f0', color: '#111111', padding: '15px', borderRadius: '5px', whiteSpace: 'pre-wrap', border: '1px solid #ddd', minHeight: '50px' }}>
-        {feedback}
-      </pre>
     </div>
+
+    <hr style={{ borderColor: 'var(--border-color)' }} />
+
+    <h2>{instructionsMap[problemId].title}</h2>
+    <p>{instructionsMap[problemId].desc}</p>
+    
+    <textarea 
+      value={code} 
+      onChange={(e) => setCode(e.target.value)} 
+      rows={12} 
+      style={{ 
+        width: '100%', 
+        fontFamily: 'monospace', 
+        padding: '12px', 
+        fontSize: '16px', 
+        color: 'var(--foreground)', 
+        backgroundColor: 'var(--card-bg)', 
+        border: '2px solid var(--border-color)', 
+        borderRadius: '6px',
+        boxSizing: 'border-box'
+      }}
+    />
+    <br /><br />
+    
+    <button 
+      onClick={submitCode} 
+      style={{ 
+        padding: '12px 24px', 
+        cursor: 'pointer', 
+        fontSize: '16px', 
+        backgroundColor: '#0070f3', 
+        color: '#ffffff', 
+        border: 'none', 
+        borderRadius: '4px',
+        fontWeight: 'bold'
+      }}
+    >
+      Submit Code
+    </button>
+    
+    <h2>Results:</h2>
+    <pre style={{ 
+      background: 'var(--card-bg)', 
+      color: 'var(--foreground)', 
+      padding: '15px', 
+      borderRadius: '6px', 
+      whiteSpace: 'pre-wrap', 
+      border: '1px solid var(--border-color)', 
+      minHeight: '60px',
+      fontFamily: 'monospace'
+    }}>
+      {feedback}
+    </pre>
+  </div>
   );
 }
