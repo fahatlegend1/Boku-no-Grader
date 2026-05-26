@@ -1,0 +1,21 @@
+{
+  "two-sum": {
+    "title": "➕ Add Two Numbers",
+    "instructions": "Write a function named 'add(a, b)' that accepts two inputs and returns their sum.",
+    "defaultCode": "def add(a, b):\n    # Write your code here\n    pass",
+    "testCases": [
+      { "input": "2, 3", "expectedOutput": "5" },
+      { "input": "-1, 1", "expectedOutput": "0" },
+      { "input": "100, 200", "expectedOutput": "300" }
+    ]
+  },
+  "multiply": {
+    "title": "✖️ Multiply Two Numbers",
+    "instructions": "Write a function named 'add(a, b)' (use 'add' as the name for now to match our simple engine) that multiplies two numbers.",
+    "defaultCode": "def add(a, b):\n    # Write your code here\n    pass",
+    "testCases": [
+      { "input": "4, 5", "expectedOutput": "20" },
+      { "input": "3, 3", "expectedOutput": "9" }
+    ]
+  }
+}
