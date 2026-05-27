@@ -1,2 +1,2 @@
-# Boku-no-Grader
+# boku-no-grader
 A homemade code grader
